@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  my_app:
+    build:
+      context: .
+    container_name: my_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./data:/tmp/data
+    environment:
+      - POSTGRES_DB=sales
+      - POSTGRES_USER=sales
+      - POSTGRES_PASSWORD=sales
+
+volumes:
+  grafana_data:
+  db_data:
