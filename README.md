@@ -9,3 +9,8 @@ The final dashboard answers the three following questions:
 - Which is the most representative market?
 
 ![grafana-dashboard](./imgs/dashboard.png)
+
+## Alerting Rules
+
+Alert set to go off when the revenue is bellow R$ 180k.
+![alerting-rule](./imgs/alerting.png)
