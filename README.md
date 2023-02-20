@@ -1,4 +1,4 @@
-# prometheus-granafa-workshop
+# Prometheus and Grafana Workshop
 Sales database analysis using Grafana and application monitoring with Prometheus.
 
 ## Dashboard
