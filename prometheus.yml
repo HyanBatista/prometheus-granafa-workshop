@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s # Set the scrape interval to 15 seconds (the default is 1 minute)
+  scrape_timeout: 10s # Set the scrape timeout to 10 seconds (the default is 10 seconds)
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090'] # Scrape metrics from the Prometheus server itself
+
+  - job_name: 'my_app'
+    static_configs:
+      - targets: ['my_app:8000'] # Scrape metrics from a service named "my_app" on port 8080
